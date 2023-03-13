@@ -2,6 +2,7 @@ package cz.upce.fe.cv02.domain;
 
 import cz.upce.fe.cv02.dto.AppUserResponseDtoV1;
 import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
@@ -32,9 +33,11 @@ public class AppUser {
     @Column
     private LocalDateTime updateDate;
 
+    @EqualsAndHashCode.Exclude
     @OneToMany(mappedBy = "author")
     private List<Task> tasks = Collections.emptyList();
 
+    @EqualsAndHashCode.Exclude
     @ManyToMany(mappedBy = "users")
     private List<Role> roles = Collections.emptyList();
 
